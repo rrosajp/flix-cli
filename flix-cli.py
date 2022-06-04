@@ -58,7 +58,8 @@ content_id = CONTENT_ID_REGEX.search(
             "imdb": imdb_id,
         },
     ).text
-).group(1)
+)[1]
+
 
 
 content = json.loads(
@@ -99,10 +100,9 @@ args = [
     MPV_EXECUTABLE,
     selected["file"],
     f"--referrer={DEFAULT_MEDIA_REFERER}",
-    "--force-media-title={}".format(
-        "Rise and live again. As my fist of vengeance. As my Moon Knight."
-    ),
+    '--force-media-title=Rise and live again. As my fist of vengeance. As my Moon Knight.',
 ]
+
 args.extend(f"--sub-file={_}" for _ in subtitles)
 
 
